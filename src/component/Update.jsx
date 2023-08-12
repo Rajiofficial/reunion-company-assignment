@@ -7,26 +7,24 @@ const Update = () => {
     const navigate=useNavigate()
 
 
-    const [firstName, setfirstName]=useState("")
-    const [lastName, setlastName]=useState("")
-    const [password  , setpassword  ]=useState("")
-    const [designation  , setdesignation ]=useState("")
-    const [phoneNumber, setphoneNumber]=useState("")
+    const [tournamentName, settournamentName]=useState("")
+    const [startDate, setstartDate]=useState("")
+    const [endDate  , setendDate  ]=useState("")
+  
 
 
 
     const gets=async()=>{
      
 
-         await axios.get("https://6258573d0c918296a495a609.mockapi.io/purchase/"+ params.id)
+         await axios.get("https://6258573d0c918296a495a609.mockapi.io/datas/"+ params.id)
         .then((res)=>{
             console.log(res.data)
             
-setfirstName(res.data.firstName)
-setlastName(res.data.lastName)
-setpassword(res.data.password)
-setdesignation(res.data.designation)
-setphoneNumber(res.data.phoneNumber)
+settournamentName(res.data.tournamentName)
+setstartDate(res.data.startDate)
+setendDate(res.data.endDate)
+
 
 
         })
@@ -43,12 +41,11 @@ setphoneNumber(res.data.phoneNumber)
 
 const handleupdate=async(e)=>{
     e.preventDefault()
-    const ans={  firstName,
-      lastName,
-      password,
-       designation,
-       phoneNumber}
-    await axios.put("https://6258573d0c918296a495a609.mockapi.io/purchase/"+ params.id,ans)
+    const ans={  tournamentName,
+      startDate,
+      endDate,
+     }
+    await axios.put("https://6258573d0c918296a495a609.mockapi.io/datas/"+ params.id,ans)
     .then((res)=>{
       console.log(res.data)
     })
@@ -60,28 +57,24 @@ navigate("/")
 }
 
   return (
-    <div className="container1">
+    <div className="container2">
 
-   
+   <div className='wrapper1'>
     
-       <form  className='wrapper1' onSubmit={handleupdate}>
+       <form   onSubmit={handleupdate}>
 
-     
-<label>firstname</label>  
-<input name='firstname'  placeholder='firstname' type='text' value={firstName} onChange={(e)=>{setfirstName(e.target.value)}}/><br/>
-<label>lastname</label>
-<input name='lastname' placeholder='lastname' type='text' value={lastName} onChange={(e)=>{setlastName(e.target.value)}}/><br/>
-<lable>password</lable>
-<input name='password' placeholder='password' type='password' value={password} onChange={(e)=>{setpassword(e.target.value)}}/><br/>
-<label>desination</label>
-<input name='desination' placeholder='desination'type='text' value={designation} onChange={(e)=>{setdesignation(e.target.value)}}/><br/>
-<label>phonenumber</label>
-<input name='phonenumber' placeholder='phonenumber'type='number' value={phoneNumber} onChange={(e)=>{setphoneNumber(e.target.value)}}/><br/>
+  <h1>Update Tournament</h1>
+       <label>tournamentName</label>  
+<input className='date' name='tournamentName'  placeholder='tournamentName' type='text' value={tournamentName} onChange={(e)=>{settournamentName(e.target.value)}}/>
+<label>startDate</label>
+<input className='date' name='startDate' placeholder='startDate' type='date' value={startDate} onChange={(e)=>{setstartDate(e.target.value)}}/>
+<lable>endDate</lable>
+<input className='date' name='endDate' placeholder='endDate' type='date' value={endDate} onChange={(e)=>{setendDate(e.target.value)}}/>
 <button type='onsubmit'>submit</button>
 
 </form>
 </div>
-
+</div>
   )
 }
 

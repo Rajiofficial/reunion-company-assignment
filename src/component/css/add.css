@@ -1,0 +1,27 @@
+.container2{
+    display: flex;
+justify-content: center;
+
+
+}
+.wrapper1{
+   
+
+    display: flex;
+
+    justify-content: center;
+    padding: 100px;
+    
+
+
+    
+}
+form{
+    background-color: yellow;
+    padding: 30px;
+    border-radius: 10px;
+
+}
+.date{
+    width: 100%;
+}
