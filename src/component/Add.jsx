@@ -6,13 +6,14 @@ import './css/add.css'
 
 const Add = () => {
 const navigate=useNavigate()
+const [member  , setmember  ]=useState("")
 const [tournamentName, settournamentName]=useState("")
 const [startDate, setstartDate]=useState("")
 const [endDate  , setendDate  ]=useState("")
 
     const handlechange=async(e)=>{
         e.preventDefault()
-        const ans={  tournamentName,
+        const ans={  member,tournamentName,
           startDate,
           endDate,
          }
@@ -43,6 +44,8 @@ const [endDate  , setendDate  ]=useState("")
     <form   onSubmit={handlechange}>
 
     <h1>Add tournament</h1>
+    <label>member</label>  
+<input className='date' name='person name'  placeholder='person name' type='text' value={member} onChange={(e)=>{setmember(e.target.value)}}/>
     <label>tournamentName</label>  
 <input className='date' name='tournamentName'  placeholder='tournamentName' type='text' value={tournamentName} onChange={(e)=>{settournamentName(e.target.value)}}/>
 <label>startDate</label>

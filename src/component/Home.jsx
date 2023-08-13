@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import "./css/home.css"
+
 const Home=()=>{
 console.log("data")
 const navi=useNavigate()
@@ -37,7 +38,11 @@ const edit=()=>{
     navi('/Add')
     }
     
-    
+const participatelist=(i)=>{
+
+  navi(`/part/${i}`)
+
+}    
 
 
 return(
@@ -45,6 +50,8 @@ return(
         
 
 <div>
+
+  
             <div>
             <button className="btnadd" onClick={()=>edit()}>add</button>
         </div>
@@ -58,6 +65,7 @@ return(
       <th scope="col">endDate</th>
       <th scope="col">edit</th>
       <th scope="col">delete</th>
+      <th scope="col">Participant</th>
      
     </tr>
   </thead>
@@ -69,9 +77,13 @@ return(
         <td>{e.startDate}</td>
         <td>{e.endDate}</td>
       
+        
+  
+      
        
 <td><button type="button" class="btn btn-primary" onClick={()=>{handleupdate(e.id)}} >edit</button></td>
 <td><button type="button" class="btn btn-danger" onClick={()=>{handledelete(e.id)}}>delete</button></td>
+<td><button type="button" class="btn btn-danger" onClick={()=>{participatelist(e.id)}}>participatelist</button></td>
 
       </tr>
     })}
@@ -79,8 +91,7 @@ return(
   </tbody>
 </table>
 
-
-    </div>
+ </div>
    
       
 
