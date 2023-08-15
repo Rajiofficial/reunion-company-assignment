@@ -7,13 +7,13 @@ import './css/add.css'
 const Add = () => {
 const navigate=useNavigate()
   const [member, setmember]=useState("")
-const [member, settournamentName]=useState("")
+const [tournamentName, settournamentName]=useState("")
 const [startDate, setstartDate]=useState("")
 const [endDate  , setendDate  ]=useState("")
 
     const handlechange=async(e)=>{
         e.preventDefault()
-        const ans={  member,member,
+        const ans={  member,tournamentName,
           startDate,
           endDate,
          }
