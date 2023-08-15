@@ -4,15 +4,30 @@ import { useNavigate } from "react-router-dom";
 import "./css/home.css"
 
 const Home=()=>{
+
+
+
+
+  const [data ,setdata]=useState([])
+  const [search ,setsearch]=useState([])
+
+
+
+
+
+
+
+
 console.log("data")
 const navi=useNavigate()
-    const [data ,setdata]=useState([])
+ 
 
     const datas=async()=>{
         await axios.get("https://6258573d0c918296a495a609.mockapi.io/datas")
         .then((res)=>{
             console.log(res.data)
             setdata(res?.data)
+            setsearch(res?.data)
         })
         .catch((err)=>{
             console.log(err)
@@ -44,7 +59,9 @@ const participatelist=(i)=>{
 
 }    
 
-
+const filter=(event)=>{
+setsearch(data.filter(f=>f.tournamentName.toLowerCase().includes(event.target.value)))
+}
 return(
     
         
@@ -52,7 +69,8 @@ return(
 <div>
 
   
-            <div>
+            <div className="head">
+              <input type="text" className="searchdata" placeholder="search" onChange={filter} />
             <button className="btnadd" onClick={()=>edit()}>add</button>
         </div>
 
@@ -70,7 +88,7 @@ return(
     </tr>
   </thead>
   <tbody>
-    {data.map((e,i)=>{
+    {search.map((e,i)=>{
       return<tr key={i}>
          <td>{e.id}</td>
         <td>{e.tournamentName}</td>
