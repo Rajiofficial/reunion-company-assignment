@@ -46,7 +46,7 @@ const [endDate  , setendDate  ]=useState("")
     <h1>Add tournament</h1>
         <label>member</label>  
       
-<input className='date' name='member'  placeholder='member' type='text' value={member} onChange={(e)=>{settournamentName(e.target.value)}}/>
+<input className='date' name='member'  placeholder='member' type='text' value={member} onChange={(e)=>{setmember(e.target.value)}}/>
     <label>tournamentName</label>  
       
 <input className='date' name='tournamentName'  placeholder='tournamentName' type='text' value={tournamentName} onChange={(e)=>{settournamentName(e.target.value)}}/>
